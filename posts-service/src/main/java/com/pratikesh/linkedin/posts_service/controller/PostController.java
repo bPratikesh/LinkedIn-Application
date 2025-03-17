@@ -1,5 +1,6 @@
 package com.pratikesh.linkedin.posts_service.controller;
 
+import com.pratikesh.linkedin.posts_service.auth.UserContextHolder;
 import com.pratikesh.linkedin.posts_service.dto.PostCreateRequestDto;
 import com.pratikesh.linkedin.posts_service.dto.PostDto;
 import com.pratikesh.linkedin.posts_service.service.PostService;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/core")
 @RequiredArgsConstructor
 public class PostController {
 
