@@ -1,5 +1,5 @@
 spring.application.name: api-gateway
-server.port: 8080
+server.port: 8081
 eureka.client.service-url.defaultZone: http://localhost:8761/eureka
 jwt.secretKey: agdq28o374tr2o3lrhfqewkljbf2478t595tyo7g5iulwqbelfudkqebwlribqewiytbrgviadpg8
 

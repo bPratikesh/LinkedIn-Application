@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -34,12 +35,12 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             final String token = tokenHeader.split("Bearer ")[1];
 
             String userId = jwtService.getUserIdFromToken(token);
-            exchange
-                    .mutate()
-                    .request(r -> r.header("X-User-Id", userId))
+
+            ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
+                    .header("X-User-Id", userId.toString())
                     .build();
 
-            return chain.filter(exchange);
+            return chain.filter(exchange.mutate().request(mutatedRequest).build());
         };
     }
 
