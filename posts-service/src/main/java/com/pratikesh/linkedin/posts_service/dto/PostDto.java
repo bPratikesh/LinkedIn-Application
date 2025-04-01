@@ -12,4 +12,5 @@ public class PostDto {
     private String content;
     private Long userId;
     private LocalDateTime createdAt;
+    private String imageUrl;
 }
